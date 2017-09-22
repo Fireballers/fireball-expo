@@ -1,28 +1,25 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Button} from 'react-native';
+import { Header, LanguageSelectors} from './index'
 
 const styles = {
-  viewStyle: {
-    backgroundColor: '#F8F8F8',
-    justifyContent: 'center',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
-    height: 60,
-    paddingTop: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    elevation: 2,
-    position: 'relative'
+    justifyContent: 'center',
   }
 };
 
-
-export default function Camera(props) {
-  const { viewStyle } = styles;
+export default function Camera({navigation: {navigate}}) {
+  const { container } = styles;
 
     return (
-      <View style={viewStyle}>
+      <View style={container}>
+        <Header headerText={'Subheader'} />
+        <LanguageSelectors />
         <Text>CAMERA</Text>
+        <Button title="take photo and nav to card" onPress={() => navigate('CardHolder')} />
       </View>
     );
   }

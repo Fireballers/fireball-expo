@@ -1,31 +1,35 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { Text, View, Picker, Option } from 'react-native';
 
 
-const styles = {
-  viewStyle: {
-    backgroundColor: '#F8F8F8',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 60,
-    paddingTop: 15,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    elevation: 2,
-    position: 'relative'
-  }
-};
+
+export default class LanguageSelectors extends Component{
+  state = {
+    fromLangauge: 'English',
+    toLanguage: 'Indonesian'
+ };
 
 
-export default function LanguageSelectors(props) {
-  const { viewStyle } = styles;
-
+  render(){
     return (
-      <View style={viewStyle}>
+      <View >
         <Text>LANGUAGE SELECTORS</Text>
+        <Picker selectedValue={this.state.fromLanguage}
+        onValueChange={(itemValue, itemIndex) => this.setState({fromLanguage: itemValue})}>
+          <Picker.Item label="English" value="English" />
+          <Picker.Item label="Swedish" value="Swedish" />
+          <Picker.Item label="Indonesian" value="Indonesian" />
+        </Picker>
+        <Text>to</Text>
+        <Picker selectedValue={this.state.toLanguage}
+        onValueChange={(itemValue, itemIndex) => this.setState({toLanguage: itemValue})}>
+          <Picker.Item label="English" value="English" />
+          <Picker.Item label="Swedish" value="Swedish" />
+          <Picker.Item label="Indonesian" value="Indonesian" />
+        </Picker>
       </View>
     );
   }
+}
 
 
